@@ -26,8 +26,10 @@ List user_card_data = [
 ];
 
 Map card_logo_image_data = {
-  "paypal": "assets/images/"
-}
+  "paypal": "assets/images/paypal_logo.png",
+  "mastercard": "assets/images/mastercard_logo.png",
+  "visa":  "assets/images/visa_logo.png"
+};
 
 class CashHomePage extends StatefulWidget {
   const CashHomePage({Key? key}) : super(key: key);
@@ -103,11 +105,24 @@ class CreditCardLVI extends StatelessWidget {
           )),
 
             Column(children: [
-              Row(children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
                 Text("Balance"),
                 Image.asset(card_logo_image_data[card_data["brand"]])
+              ],),
+              Row(mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text("\$" + card_data["balance"])
               ],)
-            ],)
+            ],),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+            Text("**** **** **** " + card_data["last_four"]),
+              Padding(padding: EdgeInsets.only(left:ss.width*.04),
+              child: Text(card_data["expire"]))
+          ],)
 
     ])
       );
