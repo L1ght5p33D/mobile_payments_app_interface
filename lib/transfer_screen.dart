@@ -58,7 +58,8 @@ class _TransferScreenState extends State<TransferScreen> {
         height:ss.height,
         fit: BoxFit.cover,) ,
       Container(height: ss.height,
-      child:Column(children: [
+      // child:Column(children: [
+        child:ListView(children:[
         Container(height: ss.height * .06,
         child:Stack(children:[
         Row(mainAxisAlignment: MainAxisAlignment.center,
@@ -87,7 +88,8 @@ class _TransferScreenState extends State<TransferScreen> {
                         fit: BoxFit.contain,))
                   ),
                 Container(
-                  child:Text(widget.benef["name"])
+                      padding:EdgeInsets.only(top:ss.width*.02),
+                    child:Text(widget.benef["name"])
                 ),
                 Container(
                   child: Text("**** **** ****" + widget.benef["last_four"],
@@ -96,7 +98,14 @@ class _TransferScreenState extends State<TransferScreen> {
                 ),
 
                 Container(
-                  child: Text("\$" + entered_amount.toString())
+                  padding:EdgeInsets.only(top:ss.width*.02),
+                  decoration: BoxDecoration(
+                    color: Colors.black,
+                  border: Border(bottom:BorderSide(
+                      color: Colors.white,width:1.0))
+                  ),
+                    child: Text("\$" + entered_amount.toString(),
+                              style: TextStyle(fontSize: ss.width*.06),)
                 ),
 
 
@@ -107,8 +116,8 @@ class _TransferScreenState extends State<TransferScreen> {
         Expanded(child:
         Container(
                   width: ss.width*.7,
-        child:ListView(children:[
-
+        // child:ListView(children:[
+child: Column(children:[
         OnScreenNumericKeypad(refresh: update_entered,),
 
             Container(height: ss.width*.02,),
@@ -123,7 +132,7 @@ class _TransferScreenState extends State<TransferScreen> {
                 borderRadius: BorderRadius.circular(ss.width*.08),
                 color: Colors.white,
               ),
-              child:Center(child:Text("Send",
+              child:Center(child:Text("Transfer",
                                       style: TextStyle(color:Colors.black),))))])
 
         ])))
