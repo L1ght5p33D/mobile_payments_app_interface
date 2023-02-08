@@ -42,38 +42,49 @@ class _CashHomePageState extends State<CashHomePage> {
                     return CreditCardLVI(card_data: user_card_data[card_idx], card_idx: card_idx,);
           })),
 
-          Container(height: ss.height * .11,
+          Container(height: ss.height * .13,
               child:ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: benef_data.length,
                   itemBuilder: (context, benef_idx){
                     if (benef_idx == 0){
                       return
-                        Container(height: ss.height * .076,
+                      Padding(
+                              padding: EdgeInsets.symmetric(horizontal:ss.width*.04),
+                          child:
+                        Container(height: ss.height * .13,
                             child:Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children:[
                                   Container(
-                                      height: ss.height * .07,
+                                      height: ss.height * .09,
+                                      width:ss.height * .09,
                                       decoration:
                                       BoxDecoration(
                                           border: Border.all(color:Colors.white, width: 1.0),
-                                          borderRadius: BorderRadius.circular(ss.height * .035)),
+                                          borderRadius: BorderRadius.circular(ss.height * .045)),
                                       child: Center(child: Icon(Icons.arrow_forward_outlined))
                                   ),
-                                  Container(height: ss.height * .012,
-                                      child:Text("Send",
-                                        style: TextStyle(fontSize: ss.height * .01),))
 
-                                ]));
+                                  Container(
+                                      padding: EdgeInsets.only(top:ss.width*.01),
+                                      height: ss.height * .025,
+                                      child:Text("Send",
+                                        style: TextStyle(fontSize: ss.height * .02),))
+
+                                ])));
                     }
                     return RecentBFS_LVI(
                       benef: benef_data[benef_idx - 1], benef_idx: benef_idx -1);
                   })),
 
-          Container(height: ss.height * .045,
-                      child: Text("Recent Transactions")),
-          Container(height: ss.height * .44,
+
+          Container(
+              padding: EdgeInsets.only(left:ss.width*.03),
+              height: ss.height * .04,
+                      child:Row(children:[ Text("Recent Transactions")])),
+          // Container(height: ss.height * .4,
+          Expanded(
                   child:
                   ListView.builder(
                       scrollDirection: Axis.vertical,

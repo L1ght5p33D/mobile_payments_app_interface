@@ -5,15 +5,15 @@ Size ss = Size(0,0);
 List user_card_data = [
   {"brand": "visa",
     "card_type": "Debit Card",
-    "balance": "2345",
+    "balance": "2,345",
     "last_four": "8989",
     "bank": "Bank of America",
     "expire": "7/12"
   },
   {"brand": "mastercard",
     "card_type": "Cashback Mastercard",
-    "balance": "2345",
-    "last_four": "8989",
+    "balance": "5,432",
+    "last_four": "3434",
     "bank": "JPMorgan",
     "expire": "8/19"
   },
@@ -58,11 +58,11 @@ List<Map> trans_data = [
   {"trans_user": "Catherine",
     "date": "August 9, 2022",
     "amount": "500.00",
-    "type": "debit"
+    "cod": "debit"
   },
   {"trans_user": "Alexa",
     "date": "August 9, 2022",
     "amount": "1111.00",
-    "type": "credit"
+    "cod": "credit"
   }
 ];
