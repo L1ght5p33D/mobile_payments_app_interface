@@ -30,3 +30,16 @@ Map card_logo_image_data = {
   "mastercard": "assets/images/mastercard_logo.png",
   "visa":  "assets/images/visa_logo.png"
 };
+
+List<Map> benef_data = [
+  {"name": "Alexa",
+    "pp_path": "images/assets/user1_pp.png" },
+  {"name": "Ben",
+    "pp_path": "images/assets/user2_pp.png" },
+  {"name": "Catherine",
+    "pp_path": "images/assets/user3_pp.png" },
+  {"name": "David",
+    "pp_path": "images/assets/user4_pp.png"},
+  {"name": "Elisa",
+    "pp_path": "images/assets/user5_pp.png" },
+];

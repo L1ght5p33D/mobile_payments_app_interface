@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 import 'package:cash_app_interface/ca_globals.dart';
 import 'package:cash_app_interface/creditcard_lvi.dart';
-
+import 'package:cash_app_interface/recent_benef_lvi.dart';
 
 
 class CashHomePage extends StatefulWidget {
@@ -36,16 +36,31 @@ class _CashHomePageState extends State<CashHomePage> {
           //card row
           Container(height: ss.height * .28,
           child:ListView.builder(
+              scrollDirection: Axis.horizontal,
               itemBuilder: (context,card_idx){
                     return CreditCardLVI(card_data: user_card_data[card_idx], card_idx: card_idx,);
           })),
 
-          Container(height: ss.height * .28,
+          Container(height: ss.height * .12,
               child:ListView.builder(
+                  scrollDirection: Axis.horizontal,
                   itemBuilder: (context, benef_idx){
                     return RecentBFS_LVI(
-                      benef: benef_data[benef_idx], benef_idx);
-                  }))
+                      benef: benef_data[benef_idx], benef_idx: benef_idx);
+                  })),
+
+          Container(height: ss.height * .05,
+                      child: Text("Recent Transactions")),
+          Container(height: ss.height * .47,
+                  child:
+                  ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      itemBuilder: (context, trans_idx){
+                        return RecentTrans_LVI(
+                            benef: trans_data[trans_idx], trans_idx: trans_idx);
+                      })),
+
+
 
         ],)
       ),
@@ -53,65 +68,45 @@ class _CashHomePageState extends State<CashHomePage> {
   }
 }
 
-List<Map> benef_data = [
-  {"name": "Alexa",
-    "pp_path": "images/assets/user1_pp.png" },
-  {"name": "Ben",
-    "pp_path": "images/assets/user2_pp.png" },
-  {"name": "Catherine",
-    "pp_path": "images/assets/user3_pp.png" },
-  {"name": "David",
-    "pp_path": "images/assets/user4_pp.png"},
-  {"name": "Elisa",
-    "pp_path": "images/assets/user5_pp.png" },
+List<Map> trans_data = [
+  {"trans_user": "Ben",
+    "date": "July 8, 2022",
+    "amount": "34.56",
+    "cod": "debit"
+  },
+  {"trans_user": "Alexa",
+    "date": "August 2, 2022",
+    "amount": "5.00",
+    "cod": "credit"
+  },
+  {"trans_user": "Catherine",
+    "date": "August 9, 2022",
+    "amount": "50.00",
+    "type": "debit"
+  }
 ];
 
-class RecentBFS_LVI extends StatelessWidget {
-  RecentBFS_LVI({Key? key, required this.benef,
-                      required this.benef_idx}) : super(key: key);
-
-  Map benef;
-  int benef_idx;
+class RecentTrans_LVI extends StatelessWidget {
+  const RecentTrans_LVI({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    if (benef_idx == 0){
-      return
-        Container(height: ss.height * .077,
-          child:Column(children:[
+    return Container(
+      width: ss.width,
+      height: ss.height * .12,
+      child:Center(child:
         Container(
-            height: ss.height * .07,
-        decoration:
-        BoxDecoration(
-        border: Border.all(color:Colors.white, width: 1.0),),
-        child: Center(child: Icon(Icons.arrow_forward_outlined))
-      ),
-            Container(height: ss.height * .012,
-            child:Text("Send",
-                        style: TextStyle(fontSize: ss.height * .01),))
-
-          ]));
-    }
-    else{
-      return
-        Container(height: ss.height * .077,
-            child:Column(children:[
-              Container(
-                  height: ss.height * .07,
-                  decoration:
-                  BoxDecoration(
-                    borderRadius: BorderRadius.circular(ss.height * .035)),
-                  child: Center(child: Image.asset(benef["pp_path"],
-                                                    width: ss.height * .07,
-                                                    height: ss.height * .07,,))
-              ),
-              Container(height: ss.height * .012,
-                  child:Text(benef["name"],
-                    style: TextStyle(fontSize: ss.height * .01),))
-
-            ]));
-    }
-
+          width: ss.width * .95,
+          height: ss.height * .1,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(ss.width*.04),
+                color: Colors.grey[800],
+          ),
+          child: Row(children: [
+            
+          ],)
+        ),)
+    );
   }
 }
 
