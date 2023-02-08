@@ -37,6 +37,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
+  numeric_keyboard: ^1.1.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -63,6 +65,18 @@ flutter:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/mastercard_logo.png
+    - assets/images/visa_logo.png
+    - assets/images/paypal_logo.png
+    - assets/images/user1_pp.png
+    - assets/images/user2_pp.png
+    - assets/images/user3_pp.png
+    - assets/images/user4_pp.png
+    - assets/images/user5_pp.png
+    - assets/images/cardbg_blue.png
+    - assets/images/cardbg_red.png
+    - assets/images/cardbg_green.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
