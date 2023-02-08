@@ -1,3 +1,4 @@
+import 'package:cash_app_interface/transfer_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:cash_app_interface/ca_globals.dart';
 
@@ -20,14 +21,20 @@ class RecentBFS_LVI extends StatelessWidget {
             child:Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children:[
-              Container(
+                  GestureDetector(
+            onTap:(){
+              Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                return TransferScreen(benef:benef);
+              }));
+            },
+            child:  Container(
               child:
                   ClipRRect(
                       borderRadius: BorderRadius.circular(ss.height * .045),
                   child: Image.asset(benef["pp_path"],
                     width: ss.height * .09,
                     height: ss.height * .09,)
-              )),
+              ))),
               Container(
                   padding: EdgeInsets.only(top:ss.width*.01),
                   height: ss.height * .025,

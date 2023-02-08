@@ -33,15 +33,20 @@ Map card_logo_image_data = {
 
 List<Map> benef_data = [
   {"name": "Alexa",
-    "pp_path": "assets/images/user2_pp.png" },
+    "pp_path": "assets/images/user2_pp.png",
+    "last_four": "2345"},
   {"name": "Ben",
-    "pp_path": "assets/images/user3_pp.png" },
+    "pp_path": "assets/images/user3_pp.png",
+    "last_four": "2345"},
   {"name": "Catherine",
-    "pp_path": "assets/images/user1_pp.png" },
+    "pp_path": "assets/images/user1_pp.png",
+    "last_four": "2345"},
   {"name": "David",
-    "pp_path": "assets/images/user4_pp.png"},
+    "pp_path": "assets/images/user4_pp.png",
+    "last_four": "2345"},
   {"name": "Ellis",
-    "pp_path": "assets/images/user5_pp.png" },
+    "pp_path": "assets/images/user5_pp.png",
+    "last_four": "2345"},
 ];
 
 List<Map> trans_data = [
