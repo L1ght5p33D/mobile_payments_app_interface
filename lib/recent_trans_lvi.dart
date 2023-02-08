@@ -24,40 +24,47 @@ class RecentTrans_LVI extends StatelessWidget {
         height: ss.height * .12,
         child:Center(child:
         Container(
-            width: ss.width * .95,
+            width: ss.width * .97,
             height: ss.height * .1,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(ss.width*.04),
               color: Colors.grey[800],
             ),
-            child: Row(children: [
+            child:Row(children: [
               ClipRRect(
                   borderRadius: BorderRadius.circular(ss.width*.025),
                   child:Image.asset(user_pp_path,
                     width: ss.height * .08,
                     height: ss.height * .08,)
               ),
-              Column(children: [
-                Container(width: ss.width*.66,
+            Padding(
+              padding:EdgeInsets.only(left:ss.width*.02, top: ss.width*.02),
+              child: Column(children: [
+                Container(width: ss.width*.4,
                     child: Text(trans["trans_user"],
                         style: TextStyle(color: Colors.white))),
-                Container(width: ss.width*.66,
+                Container(width: ss.width*.4,
                     child: Text(trans["date"],
                                 style: TextStyle(
                                   color:Colors.white
                                 ),))
-              ],),
-
+              ],)),
+            Expanded(
+                // width: ss.width*.16,
+              child:
               Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children:[
-                          Text(trans["cod"] == "credit"? "+" + trans["amount"] : "-" + trans["amount"],
-                              style: TextStyle(color:Colors.white))
+                          Padding(
+                            padding:EdgeInsets.only(right:ss.width*.02),
+                            child:
+                          Text(trans["cod"] == "credit"? "+ \$" + trans["amount"] : "- \$" + trans["amount"],
+                              style: TextStyle(color:Colors.white)))
                         ])
-                  ])
+                  ]))
             ],)
         ),)
     );

@@ -16,6 +16,8 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Cash App Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: Colors.blueGrey[900]
       ),
       home: const CashHomePage(),
     );
