@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:numeric_keyboard/numeric_keyboard.dart';
 import 'package:cash_app_interface/ca_globals.dart';
 
 class TransferScreen extends StatefulWidget {
@@ -11,6 +12,15 @@ class TransferScreen extends StatefulWidget {
 }
 
 class _TransferScreenState extends State<TransferScreen> {
+
+  int entered_amount = 0;
+
+  _onKeyboardTap(String value) {
+    setState(() {
+      entered_amount = int.parse(value);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
@@ -27,7 +37,31 @@ class _TransferScreenState extends State<TransferScreen> {
         ])),
 
         Container(
-          height: 
+          height: ss.height * .25,
+              child:Column(children: [
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey[300]!,
+                        width: ss.height * .02)),
+                        child: Image.asset(widget.benef["pp_path"])
+                  ),
+                Container(
+                  child:Text(widget.benef["name"])
+                ),
+                Container(
+                  child: Text(widget.benef["**** **** ****" + widget.benef["last_four"]])
+                ),
+
+                Container(
+                  child: Text("\$" + entered_amount.toString())
+                ),
+
+        NumericKeyboard(
+        onKeyboardTap: _onKeyboardTap
+    )
+
+
+          ],)
         )
 
       ],)
