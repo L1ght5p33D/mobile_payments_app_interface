@@ -43,3 +43,21 @@ List<Map> benef_data = [
   {"name": "Elisa",
     "pp_path": "images/assets/user5_pp.png" },
 ];
+
+List<Map> trans_data = [
+  {"trans_user": "Ben",
+    "date": "July 8, 2022",
+    "amount": "34.56",
+    "cod": "debit"
+  },
+  {"trans_user": "Alexa",
+    "date": "August 2, 2022",
+    "amount": "5.00",
+    "cod": "credit"
+  },
+  {"trans_user": "Catherine",
+    "date": "August 9, 2022",
+    "amount": "50.00",
+    "type": "debit"
+  }
+];

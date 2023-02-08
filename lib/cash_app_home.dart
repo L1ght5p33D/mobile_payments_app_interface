@@ -3,7 +3,7 @@ import 'dart:math' as math;
 import 'package:cash_app_interface/ca_globals.dart';
 import 'package:cash_app_interface/creditcard_lvi.dart';
 import 'package:cash_app_interface/recent_benef_lvi.dart';
-
+import 'package:cash_app_interface/recent_trans_lvi.dart';
 
 class CashHomePage extends StatefulWidget {
   const CashHomePage({Key? key}) : super(key: key);
@@ -57,7 +57,7 @@ class _CashHomePageState extends State<CashHomePage> {
                       scrollDirection: Axis.vertical,
                       itemBuilder: (context, trans_idx){
                         return RecentTrans_LVI(
-                            benef: trans_data[trans_idx], trans_idx: trans_idx);
+                            trans: trans_data[trans_idx], trans_idx: trans_idx);
                       })),
 
 
@@ -68,47 +68,9 @@ class _CashHomePageState extends State<CashHomePage> {
   }
 }
 
-List<Map> trans_data = [
-  {"trans_user": "Ben",
-    "date": "July 8, 2022",
-    "amount": "34.56",
-    "cod": "debit"
-  },
-  {"trans_user": "Alexa",
-    "date": "August 2, 2022",
-    "amount": "5.00",
-    "cod": "credit"
-  },
-  {"trans_user": "Catherine",
-    "date": "August 9, 2022",
-    "amount": "50.00",
-    "type": "debit"
-  }
-];
 
-class RecentTrans_LVI extends StatelessWidget {
-  const RecentTrans_LVI({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: ss.width,
-      height: ss.height * .12,
-      child:Center(child:
-        Container(
-          width: ss.width * .95,
-          height: ss.height * .1,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(ss.width*.04),
-                color: Colors.grey[800],
-          ),
-          child: Row(children: [
-            
-          ],)
-        ),)
-    );
-  }
-}
+
 
 
 
