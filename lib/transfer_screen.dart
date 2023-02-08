@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:onscreen_num_keyboard/onscreen_num_keyboard.dart';
 import 'package:cash_app_interface/ca_globals.dart';
 import 'package:cash_app_interface/numkeypad.dart';
+import 'package:cash_app_interface/transfer_success_screen.dart';
 
 class TransferScreen extends StatefulWidget {
    TransferScreen({Key? key, required this.benef}) : super(key: key);
@@ -125,15 +126,22 @@ child: Column(children:[
           children:[
             Padding(
               padding:EdgeInsets.all(ss.width*.03),
-          child:Container(
+          child:
+          GestureDetector(
+              onTap: (){
+                Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                  return TransferSuccessScreen(benef:widget.benef);
+                }));
+              },
+              child:Container(
             width:ss.width*.6,
-              height: ss.width*.2,
+              height: ss.width*.18,
               decoration:BoxDecoration(
                 borderRadius: BorderRadius.circular(ss.width*.08),
                 color: Colors.white,
               ),
               child:Center(child:Text("Transfer",
-                                      style: TextStyle(color:Colors.black),))))])
+                                      style: TextStyle(color:Colors.black),)))))])
 
         ])))
 
