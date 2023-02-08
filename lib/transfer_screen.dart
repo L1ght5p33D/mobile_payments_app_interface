@@ -50,7 +50,14 @@ class _TransferScreenState extends State<TransferScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
-      body:Container(height: ss.height,
+      body:
+      Stack(children:[
+        Image.asset(
+        "assets/images/bm_bg_op.png",
+        width:ss.width,
+        height:ss.height,
+        fit: BoxFit.cover,) ,
+      Container(height: ss.height,
       child:Column(children: [
         Container(height: ss.height * .06,
         child:Stack(children:[
@@ -66,24 +73,26 @@ class _TransferScreenState extends State<TransferScreen> {
           height: ss.height * .3,
               child:Column(children: [
                 Container(
-                    height: ss.height * .2,
-                    width: ss.height * .2,
+                    height: ss.height * .16,
+                    width: ss.height * .16,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(ss.height * .1),
-                      border: Border.all(color: Colors.grey[300]!,
+                      borderRadius: BorderRadius.circular(ss.height * .08),
+                      border: Border.all(color: Colors.grey[400]!,
                         width: ss.height * .02)),
                         child:  ClipRRect(
-                            borderRadius: BorderRadius.circular(ss.height * .1),
+                            borderRadius: BorderRadius.circular(ss.height * .08),
                             child:Image.asset(widget.benef["pp_path"],
-                          height: ss.height * .2,
-                          width: ss.height * .2,
+                          height: ss.height * .16,
+                          width: ss.height * .16,
                         fit: BoxFit.contain,))
                   ),
                 Container(
                   child:Text(widget.benef["name"])
                 ),
                 Container(
-                  child: Text("**** **** ****" + widget.benef["last_four"])
+                  child: Text("**** **** ****" + widget.benef["last_four"],
+                                style: TextStyle(fontSize: ss.width*.03,
+                                )             ,)
                 ),
 
                 Container(
@@ -94,9 +103,33 @@ class _TransferScreenState extends State<TransferScreen> {
           ],),
 
         ),
-        OnScreenNumericKeypad(refresh: update_entered,)
+
+        Expanded(child:
+        Container(
+                  width: ss.width*.7,
+        child:ListView(children:[
+
+        OnScreenNumericKeypad(refresh: update_entered,),
+
+            Container(height: ss.width*.02,),
+          Row(mainAxisAlignment: MainAxisAlignment.center,
+          children:[
+            Padding(
+              padding:EdgeInsets.all(ss.width*.03),
+          child:Container(
+            width:ss.width*.6,
+              height: ss.width*.2,
+              decoration:BoxDecoration(
+                borderRadius: BorderRadius.circular(ss.width*.08),
+                color: Colors.white,
+              ),
+              child:Center(child:Text("Send",
+                                      style: TextStyle(color:Colors.black),))))])
+
+        ])))
+
       ],)
-      )
+      )])
     ));
   }
 }

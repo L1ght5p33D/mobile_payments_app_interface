@@ -81,6 +81,7 @@ flutter:
     - assets/images/cardbg_blue.png
     - assets/images/cardbg_red.png
     - assets/images/cardbg_green.png
+    - assets/images/bm_bg_op.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

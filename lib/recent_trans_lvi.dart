@@ -28,7 +28,7 @@ class RecentTrans_LVI extends StatelessWidget {
             height: ss.height * .1,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(ss.width*.04),
-              color: Colors.grey[800],
+              color: Colors.grey[900],
             ),
             child:Row(children: [
               ClipRRect(
@@ -39,14 +39,18 @@ class RecentTrans_LVI extends StatelessWidget {
               ),
             Padding(
               padding:EdgeInsets.only(left:ss.width*.02, top: ss.width*.02),
-              child: Column(children: [
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
                 Container(width: ss.width*.4,
                     child: Text(trans["trans_user"],
                         style: TextStyle(color: Colors.white))),
                 Container(width: ss.width*.4,
                     child: Text(trans["date"],
                                 style: TextStyle(
-                                  color:Colors.white
+                                  color:Colors.white,
+                                  fontSize: ss.width*.035,
+                                  fontWeight: FontWeight.w300
                                 ),))
               ],)),
             Expanded(

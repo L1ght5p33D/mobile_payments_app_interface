@@ -15,6 +15,7 @@ class _OnScreenNumericKeypadState extends State<OnScreenNumericKeypad> {
   double key_width = ss.width * .7 / 3;
   double key_height = ss.width * .7 / 3;
   double key_radius = ss.width * .04;
+  double mat_but_elevation = ss.width * .3;
   TextStyle key_style = TextStyle(fontSize: ss.width*.05,
       fontWeight: FontWeight.w500);
   @override
@@ -39,7 +40,7 @@ class _OnScreenNumericKeypadState extends State<OnScreenNumericKeypad> {
                     },
                     child:
                     Material(
-                        elevation: ss.width*.2,
+                        elevation: mat_but_elevation,
                         child:Container(
                         decoration: BoxDecoration(
                             color:key_color,
@@ -54,7 +55,7 @@ class _OnScreenNumericKeypadState extends State<OnScreenNumericKeypad> {
                       widget.refresh();
                     },
                     child: Material(
-                        elevation: ss.width*.2,
+                        elevation: mat_but_elevation,
                         child:Container(
                         decoration: BoxDecoration(
                             color:key_color,
@@ -69,7 +70,7 @@ class _OnScreenNumericKeypadState extends State<OnScreenNumericKeypad> {
                       widget.refresh();
                     },
                     child: Material(
-                        elevation: ss.width*.2,
+                        elevation: mat_but_elevation,
                         child:Container(
                         decoration: BoxDecoration(
                             color:key_color,
@@ -89,7 +90,7 @@ class _OnScreenNumericKeypadState extends State<OnScreenNumericKeypad> {
                       widget.refresh();
                     },
                     child: Material(
-                        elevation: ss.width*.2,
+                        elevation: mat_but_elevation,
                         child:
                     Container(
                         decoration: BoxDecoration(
@@ -105,7 +106,7 @@ class _OnScreenNumericKeypadState extends State<OnScreenNumericKeypad> {
                       widget.refresh();
                     },
                     child: Material(
-                        elevation: ss.width*.2,
+                        elevation: mat_but_elevation,
                         child:Container(
                         decoration: BoxDecoration(
                             color:key_color,
@@ -120,7 +121,7 @@ class _OnScreenNumericKeypadState extends State<OnScreenNumericKeypad> {
                       widget.refresh();
                     },
                     child: Material(
-                        elevation: ss.width*.2,
+                        elevation: mat_but_elevation,
                         child:Container(
                         decoration: BoxDecoration(
                             color:key_color,
@@ -141,7 +142,7 @@ class _OnScreenNumericKeypadState extends State<OnScreenNumericKeypad> {
                     },
                     child:
                     Material(
-                        elevation: ss.width*.2,
+                        elevation: mat_but_elevation,
                         child:Container(
                         decoration: BoxDecoration(
                             color:key_color,
@@ -156,7 +157,7 @@ class _OnScreenNumericKeypadState extends State<OnScreenNumericKeypad> {
                       widget.refresh();
                     },
                     child: Material(
-                        elevation: ss.width*.2,
+                        elevation: mat_but_elevation,
                         child:Container(
                         decoration: BoxDecoration(
                             color:key_color,
@@ -171,7 +172,7 @@ class _OnScreenNumericKeypadState extends State<OnScreenNumericKeypad> {
                       widget.refresh();
                     },
                     child: Material(
-                        elevation: ss.width*.2,
+                        elevation: mat_but_elevation,
                         child:Container(
                         decoration: BoxDecoration(
                             color:key_color,
@@ -200,7 +201,7 @@ class _OnScreenNumericKeypadState extends State<OnScreenNumericKeypad> {
                       widget.refresh();
                     },
                     child: Material(
-                        elevation: ss.width*.2,
+                        elevation: mat_but_elevation,
                         child:Container(
                         decoration: BoxDecoration(
                             color:key_color,
@@ -215,7 +216,7 @@ class _OnScreenNumericKeypadState extends State<OnScreenNumericKeypad> {
                       widget.refresh();
                     },
                     child: Material(
-                        elevation: ss.width*.2,
+                        elevation: mat_but_elevation,
                         child:Container(
                         decoration: BoxDecoration(
                             color:key_color,

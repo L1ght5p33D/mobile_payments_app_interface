@@ -18,7 +18,13 @@ class _CashHomePageState extends State<CashHomePage> {
     ss = MediaQuery.of(context).size;
 
     return SafeArea(child: Scaffold(
-      body: Container(
+      body: Stack(children:[
+        Image.asset(
+          "assets/images/bm_bg_op.png",
+          width:ss.width,
+          height:ss.height,
+          fit: BoxFit.cover,) ,
+        Container(
         height: ss.height,
         child:Column(children: [
           // toolbar
@@ -97,7 +103,7 @@ class _CashHomePageState extends State<CashHomePage> {
 
 
         ],)
-      ),
+      )]),
     ));
   }
 }
