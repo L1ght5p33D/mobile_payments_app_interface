@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 Size ss = Size(0,0);
 
+int g_numkey_val = 0;
+
 List user_card_data = [
   {"brand": "visa",
     "card_type": "Debit Card",
