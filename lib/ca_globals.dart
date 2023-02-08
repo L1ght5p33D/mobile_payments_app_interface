@@ -33,15 +33,15 @@ Map card_logo_image_data = {
 
 List<Map> benef_data = [
   {"name": "Alexa",
-    "pp_path": "images/assets/user1_pp.png" },
+    "pp_path": "assets/images/user2_pp.png" },
   {"name": "Ben",
-    "pp_path": "images/assets/user2_pp.png" },
+    "pp_path": "assets/images/user3_pp.png" },
   {"name": "Catherine",
-    "pp_path": "images/assets/user3_pp.png" },
+    "pp_path": "assets/images/user1_pp.png" },
   {"name": "David",
-    "pp_path": "images/assets/user4_pp.png"},
-  {"name": "Elisa",
-    "pp_path": "images/assets/user5_pp.png" },
+    "pp_path": "assets/images/user4_pp.png"},
+  {"name": "Ellis",
+    "pp_path": "assets/images/user5_pp.png" },
 ];
 
 List<Map> trans_data = [
@@ -50,14 +50,19 @@ List<Map> trans_data = [
     "amount": "34.56",
     "cod": "debit"
   },
-  {"trans_user": "Alexa",
+  {"trans_user": "Ellis",
     "date": "August 2, 2022",
     "amount": "5.00",
     "cod": "credit"
   },
   {"trans_user": "Catherine",
     "date": "August 9, 2022",
-    "amount": "50.00",
+    "amount": "500.00",
     "type": "debit"
+  },
+  {"trans_user": "Alexa",
+    "date": "August 9, 2022",
+    "amount": "1111.00",
+    "type": "credit"
   }
 ];

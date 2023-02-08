@@ -39,9 +39,13 @@ class RecentTrans_LVI extends StatelessWidget {
               ),
               Column(children: [
                 Container(width: ss.width*.66,
-                    child: trans["trans_user"]),
+                    child: Text(trans["trans_user"],
+                        style: TextStyle(color: Colors.white))),
                 Container(width: ss.width*.66,
-                    child: trans["date"])
+                    child: Text(trans["date"],
+                                style: TextStyle(
+                                  color:Colors.white
+                                ),))
               ],),
 
               Column(
@@ -50,7 +54,8 @@ class RecentTrans_LVI extends StatelessWidget {
                     Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children:[
-                          Text(trans["cod"] == "credit"? "+" : "-" + trans["amount"])
+                          Text(trans["cod"] == "credit"? "+" + trans["amount"] : "-" + trans["amount"],
+                              style: TextStyle(color:Colors.white))
                         ])
                   ])
             ],)

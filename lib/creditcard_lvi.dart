@@ -48,7 +48,9 @@ class CreditCardLVI extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text("Balance"),
-                Image.asset(card_logo_image_data[card_data["brand"]])
+                Image.asset(card_logo_image_data[card_data["brand"]],
+                            width: ss.width * .08,
+                            height: ss.width * .08)
               ],),
             Row(mainAxisAlignment: MainAxisAlignment.start,
               children: [
