@@ -53,22 +53,22 @@ List<Map> benef_data = [
 
 List<Map> trans_data = [
   {"trans_user": "Ben",
-    "date": "July 8, 2022",
+    "date": "September 8, 2022",
     "amount": "34.56",
     "cod": "debit"
   },
   {"trans_user": "Ellis",
-    "date": "August 2, 2022",
+    "date": "August 7, 2022",
     "amount": "5.00",
     "cod": "credit"
   },
   {"trans_user": "Catherine",
-    "date": "August 9, 2022",
+    "date": "August 3, 2022",
     "amount": "500.00",
     "cod": "debit"
   },
   {"trans_user": "Alexa",
-    "date": "August 9, 2022",
+    "date": "June 19, 2022",
     "amount": "1111.00",
     "cod": "credit"
   }
