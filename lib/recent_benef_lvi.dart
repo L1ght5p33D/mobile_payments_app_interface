@@ -4,10 +4,11 @@ import 'package:cash_app_interface/ca_globals.dart';
 
 class RecentBFS_LVI extends StatelessWidget {
   RecentBFS_LVI({Key? key, required this.benef,
-    required this.benef_idx}) : super(key: key);
+    required this.benef_idx, required this.card_chosen_idx}) : super(key: key);
 
   Map benef;
   int benef_idx;
+  int card_chosen_idx;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class RecentBFS_LVI extends StatelessWidget {
                   GestureDetector(
             onTap:(){
               Navigator.of(context).push(MaterialPageRoute(builder: (context){
-                return TransferScreen(benef:benef);
+                return TransferScreen(benef:benef, user_card: user_card_data[card_chosen_idx]);
               }));
             },
             child:  Container(

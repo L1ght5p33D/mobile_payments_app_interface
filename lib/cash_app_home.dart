@@ -13,6 +13,21 @@ class CashHomePage extends StatefulWidget {
 }
 
 class _CashHomePageState extends State<CashHomePage> {
+
+  ScrollController card_scroll_controller = ScrollController();
+
+  List cards_chosen = [false, false, false];
+  int card_chosen_idx = 0;
+  reset_cards_chosen(int card_idx){
+    cards_chosen = [false, false, false];
+    cards_chosen[card_idx] = true;
+
+    setState(() {
+      cards_chosen;
+      card_chosen_idx = card_idx;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     ss = MediaQuery.of(context).size;
@@ -44,8 +59,13 @@ class _CashHomePageState extends State<CashHomePage> {
           child:ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: user_card_data.length,
+              controller: card_scroll_controller,
               itemBuilder: (context,card_idx){
-                    return CreditCardLVI(card_data: user_card_data[card_idx], card_idx: card_idx,);
+                    return CreditCardLVI(card_data: user_card_data[card_idx],
+                      card_idx: card_idx,
+                      scroll_controller : card_scroll_controller,
+                      card_chosen: cards_chosen[card_idx],
+                      reset_cards_chosen: reset_cards_chosen);
           })),
 
           Container(height: ss.height * .13,
@@ -81,7 +101,7 @@ class _CashHomePageState extends State<CashHomePage> {
                                 ])));
                     }
                     return RecentBFS_LVI(
-                      benef: benef_data[benef_idx - 1], benef_idx: benef_idx -1);
+                      benef: benef_data[benef_idx - 1], benef_idx: benef_idx -1, card_chosen_idx: card_chosen_idx,);
                   })),
 
 

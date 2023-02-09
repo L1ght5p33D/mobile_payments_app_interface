@@ -6,22 +6,26 @@ import 'package:cash_app_interface/cash_app_home.dart';
 class TransferSuccessScreen extends StatelessWidget {
    TransferSuccessScreen({Key? key,
      required this.benef,
-     required this.amount}) : super(key: key);
+     required this.amount,
+    required this.user_card}) : super(key: key);
 
   Map benef;
   int amount;
+  Map user_card;
 
-  Map send_account_data = {
-    "last_four": "2323",
-    "balance": "12345"
-  };
+
 
   @override
   Widget build(BuildContext context) {
 
+    Map send_account_data = {
+      "last_four": user_card["last_four"],
+      "balance": user_card["balance"].replaceAll(",","")
+    };
+
     String new_account_balance;
 
-    new_account_balance = (int.parse(send_account_data["balance"]) - amount).toString();
+    new_account_balance = (double.parse(send_account_data["balance"]) - amount).toStringAsFixed(2);
 
     return SafeArea(child: Scaffold(
       body: Container(height: ss.height,

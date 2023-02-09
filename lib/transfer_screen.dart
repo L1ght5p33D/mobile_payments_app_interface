@@ -6,9 +6,10 @@ import 'package:cash_app_interface/numkeypad.dart';
 import 'package:cash_app_interface/transfer_success_screen.dart';
 
 class TransferScreen extends StatefulWidget {
-   TransferScreen({Key? key, required this.benef}) : super(key: key);
+   TransferScreen({Key? key, required this.benef, required this.user_card}) : super(key: key);
 
   Map benef;
+  Map user_card;
 
   @override
   _TransferScreenState createState() => _TransferScreenState();
@@ -129,8 +130,19 @@ child: Column(children:[
           child:
           GestureDetector(
               onTap: (){
+                DateTime today = new DateTime.now();
+                String dateSlug ="${today.month.toString().padLeft(2,'0')} ${today.day.toString().padLeft(2,'0')}, ${today.year.toString()}";
+                print(dateSlug);
+
+            trans_data.insert(0,
+                {"trans_user": widget.benef["name"],
+                "date": dateSlug,
+                "amount": entered_amount.toString() + ".00",
+                "cod": "debit"
+                });
+
                 Navigator.of(context).push(MaterialPageRoute(builder: (context){
-                  return TransferSuccessScreen(benef:widget.benef, amount: entered_amount);
+                  return TransferSuccessScreen(benef:widget.benef, amount: entered_amount, user_card: widget.user_card);
                 }));
               },
               child:Container(
