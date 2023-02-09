@@ -130,7 +130,7 @@ child: Column(children:[
           GestureDetector(
               onTap: (){
                 Navigator.of(context).push(MaterialPageRoute(builder: (context){
-                  return TransferSuccessScreen(benef:widget.benef);
+                  return TransferSuccessScreen(benef:widget.benef, amount: entered_amount);
                 }));
               },
               child:Container(
