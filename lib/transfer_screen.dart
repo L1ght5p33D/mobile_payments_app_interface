@@ -16,6 +16,20 @@ class TransferScreen extends StatefulWidget {
 }
 
 class _TransferScreenState extends State<TransferScreen> {
+  List<String> months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ];
 
   int entered_amount = 0;
 
@@ -131,7 +145,7 @@ child: Column(children:[
           GestureDetector(
               onTap: (){
                 DateTime today = new DateTime.now();
-                String dateSlug ="${today.month.toString().padLeft(2,'0')} ${today.day.toString().padLeft(2,'0')}, ${today.year.toString()}";
+                String dateSlug ="${months[today.month]} ${today.day.toString().padLeft(2,'0')}, ${today.year.toString()}";
                 print(dateSlug);
 
             trans_data.insert(0,
