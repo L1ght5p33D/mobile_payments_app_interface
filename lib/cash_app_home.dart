@@ -54,10 +54,10 @@ class _CashHomePageState extends State<CashHomePage> {
           Container(height: ss.height * .28,
           child:ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: user_card_data.length,
+              itemCount: state!.user_card_data.length,
               controller: card_scroll_controller,
               itemBuilder: (context,card_idx){
-                    return CreditCardLVI(card_data: user_card_data[card_idx],
+                    return CreditCardLVI(card_data: state!.user_card_data[card_idx],
                       card_idx: card_idx,
                       scroll_controller : card_scroll_controller,
                     );
@@ -109,10 +109,10 @@ class _CashHomePageState extends State<CashHomePage> {
                   child:
                   ListView.builder(
                       scrollDirection: Axis.vertical,
-                      itemCount: trans_data.length,
+                      itemCount: state!.trans_data.length,
                       itemBuilder: (context, trans_idx){
                         return RecentTrans_LVI(
-                            trans: trans_data[trans_idx], trans_idx: trans_idx);
+                            trans: state!.trans_data[trans_idx], trans_idx: trans_idx);
                       })),
 
 

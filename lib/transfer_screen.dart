@@ -3,6 +3,8 @@ import 'package:flutter/rendering.dart';
 import 'package:cash_app_interface/ca_globals.dart';
 import 'package:cash_app_interface/numkeypad.dart';
 import 'package:cash_app_interface/transfer_success_screen.dart';
+import 'package:cash_app_interface/ca_state.dart';
+import 'package:cash_app_interface/AppStateModel.dart';
 
 class TransferScreen extends StatefulWidget {
    TransferScreen({Key? key, required this.benef, required this.user_card}) : super(key: key);
@@ -15,20 +17,9 @@ class TransferScreen extends StatefulWidget {
 }
 
 class _TransferScreenState extends State<TransferScreen> {
-  List<String> months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-  ];
+
+  AppStateContainerState? asc;
+  AppState? state;
 
   int entered_amount = 0;
 
@@ -64,6 +55,10 @@ class _TransferScreenState extends State<TransferScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    asc = AppStateContainer.of(context);
+    state = asc!.state;
+
     return SafeArea(child: Scaffold(
       body:
       Stack(children:[
@@ -147,15 +142,39 @@ child: Column(children:[
                 String dateSlug ="${months[today.month]} ${today.day.toString().padLeft(2,'0')}, ${today.year.toString()}";
                 print(dateSlug);
 
-            trans_data.insert(0,
+                state!.trans_data.insert(0,
                 {"trans_user": widget.benef["name"],
                 "date": dateSlug,
                 "amount": entered_amount.toString() + ".00",
                 "cod": "debit"
                 });
 
+                String oldBalance = widget.user_card["balance"];
+
+                String balance_deci = "00";
+                if (widget.user_card["balance"].contains(".")) {
+                   balance_deci = widget.user_card["balance"].split(
+                      ".")[1];
+                }
+                    print("pre parse balance balance:: " + widget.user_card["balance"]);
+
+                String newBalance = (int.parse(widget.user_card["balance"].replaceAll(",","").split(".")[0]) - entered_amount).toString();
+                    print("new palance post parse ::: " + newBalance);
+
+                String newBalanceFormat =
+                    formatAmount(newBalance);
+                  if (balance_deci == "00"){
+                    state!.user_card_data[state!.card_chosen_idx]["balance"] =
+                        newBalanceFormat;
+                  }else {
+                    state!.user_card_data[state!.card_chosen_idx]["balance"] =
+                        newBalanceFormat + "." + balance_deci;
+                  }
+                    asc!.updateState();
+
+
                 Navigator.of(context).push(MaterialPageRoute(builder: (context){
-                  return TransferSuccessScreen(benef:widget.benef, amount: entered_amount, user_card: widget.user_card);
+                  return TransferSuccessScreen(benef:widget.benef, amount: entered_amount, user_card: widget.user_card, old_balance: oldBalance);
                 }));
               },
               child:Container(

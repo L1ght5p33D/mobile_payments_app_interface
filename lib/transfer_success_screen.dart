@@ -9,25 +9,29 @@ class TransferSuccessScreen extends StatelessWidget {
    TransferSuccessScreen({Key? key,
      required this.benef,
      required this.amount,
-    required this.user_card}) : super(key: key);
+    required this.user_card,
+   required this.old_balance}) : super(key: key);
 
   Map benef;
   int amount;
   Map user_card;
+  String old_balance;
 
-
+   AppStateContainerState? asc;
+   AppState? state;
 
   @override
   Widget build(BuildContext context) {
+
+    asc = AppStateContainer.of(context);
+    state = asc!.state;
 
     Map send_account_data = {
       "last_four": user_card["last_four"],
       "balance": user_card["balance"].replaceAll(",","")
     };
 
-    String new_account_balance;
-
-    new_account_balance = (double.parse(send_account_data["balance"]) - amount).toStringAsFixed(2);
+    print("success screen build");
 
     return SafeArea(child: Scaffold(
       body: Container(height: ss.height,
@@ -61,6 +65,7 @@ class TransferSuccessScreen extends StatelessWidget {
                   child: Text(benef["name"]),
                   ),Padding(padding: EdgeInsets.only(top:ss.width * .02),
                   child:
+
                   Text("**** **** **** " + benef["last_four"],
                       style: TextStyle(fontSize: ss.width*.03,
                                         fontWeight: FontWeight.w300)   ,),),
@@ -82,12 +87,12 @@ class TransferSuccessScreen extends StatelessWidget {
                     Text("**** **** **** " + send_account_data["last_four"],
                         style: TextStyle(fontSize: ss.width*.03,
                             fontWeight: FontWeight.w300)),
-                    Text("\$"  + send_account_data["balance"],
+                    Text("\$"  + old_balance,
                         style: TextStyle(fontSize: ss.width*.05,
                             fontWeight: FontWeight.w500))
                     ]),
 
-                        Text("\$" + new_account_balance,
+                        Text("\$" + user_card["balance"],
                             style: TextStyle(fontSize: ss.width*.05,
                                 fontWeight: FontWeight.w400))
 
@@ -150,9 +155,10 @@ class TransferSuccessScreen extends StatelessWidget {
 
             GestureDetector(
               onTap:(){
-            Navigator.of(context).push(MaterialPageRoute(builder: (context){
-            return AppStateContainer(child:CashHomePage());
-            }));
+
+                // asc!.updateState();
+                Navigator.pop(context);
+                Navigator.pop(context);
             },
             child:Container(
                 width:ss.width*.6,

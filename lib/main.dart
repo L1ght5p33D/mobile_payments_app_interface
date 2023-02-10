@@ -15,7 +15,7 @@ class CashApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print("myapp build");
-    return MaterialApp(
+    return  AppStateContainer(child:MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Cash App Demo',
       theme: ThemeData(
@@ -23,7 +23,7 @@ class CashApp extends StatelessWidget {
         brightness: Brightness.dark,
         scaffoldBackgroundColor: Colors.blueGrey[900]
       ),
-      home:  AppStateContainer(child: CashHomePage()),
+      home:  CashHomePage()),
     );
   }
 }

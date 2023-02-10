@@ -28,7 +28,7 @@ class RecentBFS_LVI extends StatelessWidget {
                   GestureDetector(
             onTap:(){
               Navigator.of(context).push(MaterialPageRoute(builder: (context){
-                return TransferScreen(benef:benef, user_card: user_card_data[state!.card_chosen_idx]);
+                return TransferScreen(benef:benef, user_card: state!.user_card_data[state!.card_chosen_idx]);
               }));
             },
             child:  Container(

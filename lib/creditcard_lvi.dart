@@ -51,8 +51,8 @@ class _CreditCardLVIState extends State<CreditCardLVI> {
               duration: Duration(milliseconds: 500),
               curve: Curves.easeOut);
 
+              state!.reset_cards_chosen();
               setState(() {
-                state!.cards_chosen = [false, false, false];
                 state!.cards_chosen[widget.card_idx] = true;
                 state!.card_chosen_idx = widget.card_idx;
               });
@@ -108,7 +108,7 @@ class _CreditCardLVIState extends State<CreditCardLVI> {
                       style:TextStyle(fontSize: ss.width*.1))
               ],),
 
-          widget.card_data.containsKey("last_four")?
+          widget.card_data["brand"] != "paypal"?
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [

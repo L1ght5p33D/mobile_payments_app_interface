@@ -4,28 +4,25 @@ Size ss = Size(0,0);
 
 int g_numkey_val = 0;
 
-List user_card_data = [
-  {"brand": "visa",
-    "card_type": "Debit Card",
-    "balance": "2,345",
-    "last_four": "8989",
-    "bank": "Bank of America",
-    "expire": "7/12"
-  },
-  {"brand": "mastercard",
-    "card_type": "Cashback Mastercard",
-    "balance": "5,432",
-    "last_four": "3434",
-    "bank": "JPMorgan",
-    "expire": "8/19"
-  },
-  {"brand": "paypal",
-    "card_type": "PayPal Credit",
-    "balance": "455.50",
-    "bank": "Paypal",
-    // "last_four": "8989"
+// does not work with decimals
+String formatAmount(amount){
+  String price = amount.toString();
+  String priceInText = "";
+  int counter = 0;
+  for(int i = (price.length - 1);  i >= 0; i--){
+    counter++;
+    String str = price[i];
+    if((counter % 3) != 0 && i !=0){
+      priceInText = "$str$priceInText";
+    }else if(i == 0 ){
+      priceInText = "$str$priceInText";
+
+    }else{
+      priceInText = ",$str$priceInText";
+    }
   }
-];
+  return priceInText;
+}
 
 Map card_logo_image_data = {
   "paypal": "assets/images/paypal_logo.png",
@@ -51,25 +48,17 @@ List<Map> benef_data = [
     "last_four": "2345"},
 ];
 
-List<Map> trans_data = [
-  {"trans_user": "Ben",
-    "date": "September 8, 2022",
-    "amount": "34.56",
-    "cod": "debit"
-  },
-  {"trans_user": "Ellis",
-    "date": "August 7, 2022",
-    "amount": "5.00",
-    "cod": "credit"
-  },
-  {"trans_user": "Catherine",
-    "date": "August 3, 2022",
-    "amount": "500.00",
-    "cod": "debit"
-  },
-  {"trans_user": "Alexa",
-    "date": "June 19, 2022",
-    "amount": "1111.00",
-    "cod": "credit"
-  }
+List<String> months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
 ];
