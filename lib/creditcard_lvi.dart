@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:cash_app_interface/ca_globals.dart';
+import 'package:cash_app_interface/ca_state.dart';
+import 'package:cash_app_interface/AppStateModel.dart';
 
 class CreditCardLVI extends StatefulWidget {
   CreditCardLVI({Key? key, required this.card_data,
     required this.card_idx,
     required this.scroll_controller,
-    required this.card_chosen,
-    required this.reset_cards_chosen }) : super(key: key);
+    // required this.card_chosen,
+    // required this.reset_cards_chosen
+  }) : super(key: key);
 
   Map card_data;
   int card_idx;
   ScrollController scroll_controller;
-  bool card_chosen;
-  Function reset_cards_chosen;
+  // bool card_chosen;
+  // Function reset_cards_chosen;
 
   @override
   _CreditCardLVIState createState() => _CreditCardLVIState();
@@ -20,21 +23,28 @@ class CreditCardLVI extends StatefulWidget {
 
 class _CreditCardLVIState extends State<CreditCardLVI> {
 
-
-
 bool card_chosen = false;
 
 @override
   void initState() {
+  print("lvi state init called");
   if (widget.card_idx == 0){
     card_chosen = true;
   }
     super.initState();
   }
-@override
-  Widget build(BuildContext context) {
 
-  card_chosen = widget.card_chosen;
+  AppStateContainerState asc = AppStateContainerState();
+  AppState state = AppState();
+
+  @override
+  Widget build(BuildContext context) {
+  asc = AppStateContainer.of(context);
+    state = asc.state;
+
+    print("State cards chosen:: " + state.cards_chosen.toString());
+
+  // card_chosen = widget.card_chosen;
 
     String card_img_path = "";
     if (widget.card_idx.remainder(3) == 2){
@@ -47,7 +57,6 @@ bool card_chosen = false;
       card_img_path = "assets/images/cardbg_red.png";
     }
 
-
     double card_height = ss.height * .27;
     double card_width = ss.width * .88;
 
@@ -58,10 +67,16 @@ bool card_chosen = false;
               duration: Duration(milliseconds: 500),
               curve: Curves.easeOut);
 
-              widget.reset_cards_chosen(widget.card_idx);
               setState(() {
-                card_chosen = true;
+                state.cards_chosen = [false, false, false];
+                state.cards_chosen[widget.card_idx] = true;
+                state.card_chosen_idx = widget.card_idx;
               });
+
+              print("Widget card idx:: " + widget.card_idx.toString());
+
+              asc.updateState();
+
         },
     child:Container(
         width: card_width,
@@ -74,8 +89,8 @@ bool card_chosen = false;
                       height: card_height,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(ss.width*.09),
-                          border: Border.all(width: card_chosen? 3.0: 0.0,
-                              color:widget.card_chosen? Colors.tealAccent[700]!: Colors.transparent)
+                          border: Border.all(width: state.cards_chosen[widget.card_idx]? 3.0: 0.0,
+                              color:state.cards_chosen[widget.card_idx]? Colors.tealAccent[700]!: Colors.transparent)
                       ),
                       // padding: EdgeInsets.only(right:ss.width*.02),
                       child:

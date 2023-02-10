@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:cash_app_interface/cash_app_home.dart';
+import 'package:cash_app_interface/ca_state.dart';
+import 'package:cash_app_interface/AppStateModel.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
 
-  // This widget is the root of your application.
+
+class MyApp extends StatelessWidget {
+  MyApp({super.key});
+
+  AppStateContainerState asc = AppStateContainerState();
+  AppState state = AppState();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,8 +25,34 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         scaffoldBackgroundColor: Colors.blueGrey[900]
       ),
-      home: const CashHomePage(),
+      home:  AppStateContainer(child: CashHomePage(), state:state),
     );
   }
 }
 
+// class MyApp extends StatefulWidget {
+//   const MyApp({Key? key}) : super(key: key);
+//
+//   @override
+//   _MyAppState createState() => _MyAppState();
+// }
+//
+// class _MyAppState extends State<MyApp> {
+//
+//   AppStateContainerState asc = AppStateContainerState();
+//   AppState state = AppState();
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       title: 'Flutter Cash App Demo',
+//       theme: ThemeData(
+//           primarySwatch: Colors.blue,
+//           brightness: Brightness.dark,
+//           scaffoldBackgroundColor: Colors.blueGrey[900]
+//       ),
+//       home:  AppStateContainer(child: CashHomePage(), state:state),
+//     );
+//   }
+// }

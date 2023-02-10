@@ -3,16 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:cash_app_interface/ca_globals.dart';
 
 class RecentBFS_LVI extends StatelessWidget {
-  RecentBFS_LVI({Key? key, required this.benef,
-    required this.benef_idx, required this.card_chosen_idx}) : super(key: key);
+  RecentBFS_LVI({Key? key, required this.benef}) : super(key: key);
 
   Map benef;
-  int benef_idx;
-  int card_chosen_idx;
 
   @override
   Widget build(BuildContext context) {
-
+    asc = AppStateContainer.of(context);
+    state = asc.state;
       return
       Padding(
           padding: EdgeInsets.symmetric(horizontal:ss.width*.04),

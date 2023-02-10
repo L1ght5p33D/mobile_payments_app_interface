@@ -4,6 +4,8 @@ import 'package:cash_app_interface/ca_globals.dart';
 import 'package:cash_app_interface/creditcard_lvi.dart';
 import 'package:cash_app_interface/recent_benef_lvi.dart';
 import 'package:cash_app_interface/recent_trans_lvi.dart';
+import 'package:cash_app_interface/ca_state.dart';
+import 'package:cash_app_interface/AppStateModel.dart';
 
 class CashHomePage extends StatefulWidget {
   const CashHomePage({Key? key}) : super(key: key);
@@ -16,21 +18,14 @@ class _CashHomePageState extends State<CashHomePage> {
 
   ScrollController card_scroll_controller = ScrollController();
 
-  List cards_chosen = [false, false, false];
-  int card_chosen_idx = 0;
-  reset_cards_chosen(int card_idx){
-    cards_chosen = [false, false, false];
-    cards_chosen[card_idx] = true;
-
-    setState(() {
-      cards_chosen;
-      card_chosen_idx = card_idx;
-    });
-  }
+  AppStateContainerState asc = AppStateContainerState();
+  AppState state = AppState();
 
   @override
   Widget build(BuildContext context) {
     ss = MediaQuery.of(context).size;
+    asc = AppStateContainer.of(context);
+    state = asc.state;
 
     return SafeArea(child: Scaffold(
       body: Stack(children:[
@@ -64,8 +59,7 @@ class _CashHomePageState extends State<CashHomePage> {
                     return CreditCardLVI(card_data: user_card_data[card_idx],
                       card_idx: card_idx,
                       scroll_controller : card_scroll_controller,
-                      card_chosen: cards_chosen[card_idx],
-                      reset_cards_chosen: reset_cards_chosen);
+                    );
           })),
 
           Container(height: ss.height * .13,
@@ -101,7 +95,7 @@ class _CashHomePageState extends State<CashHomePage> {
                                 ])));
                     }
                     return RecentBFS_LVI(
-                      benef: benef_data[benef_idx - 1], benef_idx: benef_idx -1, card_chosen_idx: card_chosen_idx,);
+                      benef: benef_data[benef_idx - 1], benef_idx: benef_idx -1, card_chosen_idx: state.card_chosen_idx,);
                   })),
 
 
@@ -119,7 +113,6 @@ class _CashHomePageState extends State<CashHomePage> {
                         return RecentTrans_LVI(
                             trans: trans_data[trans_idx], trans_idx: trans_idx);
                       })),
-
 
 
         ],)
