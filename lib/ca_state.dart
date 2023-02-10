@@ -31,11 +31,11 @@ class AppStateContainer extends StatefulWidget {
   AppStateContainer(
       {Key? key,
         required this.child,
-        required this.state,
+        this.state,
 });
 
   // Your apps state is managed by the container
-  AppState state = AppState();
+  AppState? state;
 
 
   // This widget is simply the root of the tree,
@@ -62,7 +62,7 @@ class AppStateContainer extends StatefulWidget {
 class AppStateContainerState extends State<AppStateContainer> {
   // Just padding the state through so we don't have to
   // manipulate it with widget.state.
-  AppState state = AppState();
+  AppState? state;
 
   void updateState() {
     setState(() {
@@ -79,7 +79,7 @@ class AppStateContainerState extends State<AppStateContainer> {
     // for existing users and all that.
 
     print("Init AppStateContainerState");
-    // state = AppState();
+    state = AppState();
     super.initState();
   }
 

@@ -1,16 +1,21 @@
 import 'package:cash_app_interface/transfer_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:cash_app_interface/ca_globals.dart';
+import 'package:cash_app_interface/ca_state.dart';
+import 'package:cash_app_interface/AppStateModel.dart';
 
 class RecentBFS_LVI extends StatelessWidget {
   RecentBFS_LVI({Key? key, required this.benef}) : super(key: key);
 
   Map benef;
+  AppStateContainerState? asc;
+  AppState? state;
 
   @override
   Widget build(BuildContext context) {
     asc = AppStateContainer.of(context);
-    state = asc.state;
+    state = asc!.state;
+
       return
       Padding(
           padding: EdgeInsets.symmetric(horizontal:ss.width*.04),
@@ -23,7 +28,7 @@ class RecentBFS_LVI extends StatelessWidget {
                   GestureDetector(
             onTap:(){
               Navigator.of(context).push(MaterialPageRoute(builder: (context){
-                return TransferScreen(benef:benef, user_card: user_card_data[card_chosen_idx]);
+                return TransferScreen(benef:benef, user_card: user_card_data[state!.card_chosen_idx]);
               }));
             },
             child:  Container(

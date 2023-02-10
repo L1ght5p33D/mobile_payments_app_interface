@@ -7,15 +7,13 @@ class CreditCardLVI extends StatefulWidget {
   CreditCardLVI({Key? key, required this.card_data,
     required this.card_idx,
     required this.scroll_controller,
-    // required this.card_chosen,
-    // required this.reset_cards_chosen
+
   }) : super(key: key);
 
   Map card_data;
   int card_idx;
   ScrollController scroll_controller;
-  // bool card_chosen;
-  // Function reset_cards_chosen;
+
 
   @override
   _CreditCardLVIState createState() => _CreditCardLVIState();
@@ -23,28 +21,14 @@ class CreditCardLVI extends StatefulWidget {
 
 class _CreditCardLVIState extends State<CreditCardLVI> {
 
-bool card_chosen = false;
 
-@override
-  void initState() {
-  print("lvi state init called");
-  if (widget.card_idx == 0){
-    card_chosen = true;
-  }
-    super.initState();
-  }
-
-  AppStateContainerState asc = AppStateContainerState();
-  AppState state = AppState();
+  AppStateContainerState? asc;
+  AppState? state;
 
   @override
   Widget build(BuildContext context) {
   asc = AppStateContainer.of(context);
-    state = asc.state;
-
-    print("State cards chosen:: " + state.cards_chosen.toString());
-
-  // card_chosen = widget.card_chosen;
+    state = asc!.state;
 
     String card_img_path = "";
     if (widget.card_idx.remainder(3) == 2){
@@ -68,14 +52,14 @@ bool card_chosen = false;
               curve: Curves.easeOut);
 
               setState(() {
-                state.cards_chosen = [false, false, false];
-                state.cards_chosen[widget.card_idx] = true;
-                state.card_chosen_idx = widget.card_idx;
+                state!.cards_chosen = [false, false, false];
+                state!.cards_chosen[widget.card_idx] = true;
+                state!.card_chosen_idx = widget.card_idx;
               });
 
               print("Widget card idx:: " + widget.card_idx.toString());
 
-              asc.updateState();
+              asc!.updateState();
 
         },
     child:Container(
@@ -89,8 +73,8 @@ bool card_chosen = false;
                       height: card_height,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(ss.width*.09),
-                          border: Border.all(width: state.cards_chosen[widget.card_idx]? 3.0: 0.0,
-                              color:state.cards_chosen[widget.card_idx]? Colors.tealAccent[700]!: Colors.transparent)
+                          border: Border.all(width: state!.cards_chosen[widget.card_idx]? 3.0: 0.0,
+                              color:state!.cards_chosen[widget.card_idx]? Colors.tealAccent[700]!: Colors.transparent)
                       ),
                       // padding: EdgeInsets.only(right:ss.width*.02),
                       child:

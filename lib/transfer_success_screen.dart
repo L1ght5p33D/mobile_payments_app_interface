@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 import 'package:cash_app_interface/ca_globals.dart';
 import 'package:cash_app_interface/cash_app_home.dart';
+import 'package:cash_app_interface/ca_state.dart';
+import 'package:cash_app_interface/AppStateModel.dart';
 
 class TransferSuccessScreen extends StatelessWidget {
    TransferSuccessScreen({Key? key,
@@ -149,7 +151,7 @@ class TransferSuccessScreen extends StatelessWidget {
             GestureDetector(
               onTap:(){
             Navigator.of(context).push(MaterialPageRoute(builder: (context){
-            return CashHomePage();
+            return AppStateContainer(child:CashHomePage());
             }));
             },
             child:Container(

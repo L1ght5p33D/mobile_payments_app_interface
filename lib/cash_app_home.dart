@@ -18,14 +18,15 @@ class _CashHomePageState extends State<CashHomePage> {
 
   ScrollController card_scroll_controller = ScrollController();
 
-  AppStateContainerState asc = AppStateContainerState();
-  AppState state = AppState();
+  AppStateContainerState? asc ;
+  AppState? state;
 
   @override
   Widget build(BuildContext context) {
     ss = MediaQuery.of(context).size;
+
     asc = AppStateContainer.of(context);
-    state = asc.state;
+    state = asc!.state;
 
     return SafeArea(child: Scaffold(
       body: Stack(children:[
@@ -95,7 +96,7 @@ class _CashHomePageState extends State<CashHomePage> {
                                 ])));
                     }
                     return RecentBFS_LVI(
-                      benef: benef_data[benef_idx - 1], benef_idx: benef_idx -1, card_chosen_idx: state.card_chosen_idx,);
+                      benef: benef_data[benef_idx - 1]);
                   })),
 
 
